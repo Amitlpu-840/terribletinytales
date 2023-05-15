@@ -1,17 +1,14 @@
-import Tcube from './components/Tcube'
-import './App.css';
-import { Outlet } from 'react-router-dom';
+import "./App.css";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
-       <header className="App-header">
-        <h1 className="App-title">Terribly Tiny Tales Frontend Assignment</h1>
-      </header>
-      <Outlet/>
-      <footer className="App-footer">
-      Submitted by Amit Giri (12008090)
-      </footer>
+      <Header/>
+      <Outlet />
+      <Footer/>
     </div>
   );
 }
