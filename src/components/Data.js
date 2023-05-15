@@ -57,12 +57,12 @@ function Data() {
 
   return (
     <div className="container">
+      <button className="export-button" onClick={handleExportData}>
+        Export CSV
+      </button>
       <div className="chart-container">
         <h2>Top 20 Words</h2>
         {histogramData && <Bar data={histogramData} />}
-        <button className="export-button" onClick={handleExportData}>
-          Export CSV
-        </button>
       </div>
     </div>
   );
