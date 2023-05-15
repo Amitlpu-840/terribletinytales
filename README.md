@@ -1,6 +1,135 @@
-# Getting Started with Create React App
+# Terribly Tiny Tales
+## Deployed on netlify
+Live link of website -  [click here](https://ttt-by-amitgiri.netlify.app/) or follow https://ttt-by-amitgiri.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Screenshots
+![image](https://github.com/Amitlpu-840/terribletinytales/assets/77196415/78141691-9c6f-40b0-b96f-03c0ec2e3c50)
+![image](https://github.com/Amitlpu-840/terribletinytales/assets/77196415/752c2e92-fcf9-440a-a1c2-1d199e72144c)
+
+## index.js
+
+This is the entry point of the application. It renders the main `App` component and sets up the routing using `react-router-dom`.
+
+### Usage
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Data from "./components/Data";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="data" element={<Data />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+reportWebVitals();
+```
+
+## Home Component
+
+This component represents the home page of the application. It displays a message and a submit button. When the submit button is clicked, it redirects to the "/data" route.
+
+### Usage
+
+```jsx
+import React from "react";
+import { Link } from "react-router-dom";
+
+function Home() {
+  return (
+    <div className="container">
+      <h2>Click on the submit button to get data from terriblytinytales.txt 👇</h2>
+      <Link to="/data">
+        <button className="submit-button">Submit</button>
+      </Link>
+    </div>
+  );
+}
+
+export default Home;
+```
+
+## Header Component
+
+This component represents the header section of the application. It displays the title of the application.
+
+### Usage
+
+```jsx
+import React from "react";
+
+function Header() {
+  return (
+    <header className="App-header">
+      <h1 className="App-title">Terribly Tiny Tales Frontend Assignment</h1>
+    </header>
+  );
+}
+
+export default Header;
+```
+## Data Component
+
+This component fetches data from the "https://www.terriblytinytales.com/test.txt" URL and displays it as a histogram chart. It also provides an export button to download the data as a CSV file.
+
+### Usage
+
+```jsx
+import React, { useEffect, useState } from "react";
+import { Bar } from "react-chartjs-2";
+import Chart from "chart.js/auto";
+
+function Data() {
+  // State and effect hooks are used for data fetching and handling
+
+  return (
+    <div className="container">
+      {/* Export button */}
+      <button className="export-button" onClick={handleExportData}>
+        Export CSV
+      </button>
+
+      {/* Chart container */}
+      <div className="chart-container">
+        <h2>Top 20 Words</h2>
+        {histogramData && <Bar data={histogramData} />}
+      </div>
+    </div>
+  );
+}
+
+export default Data;
+```
+
+## Footer Component
+
+This component represents the footer section of the application. It displays the name and student ID of the person who submitted the assignment (Amit giri).
+
+### Usage
+
+```jsx
+import React from "react";
+
+function Footer() {
+  return <footer className="App-footer">Submitted by Amit Giri (12008090)</footer>;
+}
+
+export default Footer;
+```
 
 ## Available Scripts
 
@@ -10,61 +139,3 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
